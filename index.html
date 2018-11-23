@@ -12,6 +12,7 @@
 </audio></div>
 </body>
 <script type="text/javascript">
+            var PAUSE_IN_SECONDS = 5;
             function playRandomSong2() {
                 var songs = [
                     'assets/eartraining/1.mp3',
@@ -72,7 +73,9 @@
             $(function() {
                 playRandomSong2();
                 $('#song-note').on('ended', function() {
-                    playRandomSong2();
+                    setTimeout(function() {
+                        playRandomSong2();
+                    }, 1000 * PAUSE_IN_SECONDS);
                 });
                 $('#song-play-note').on('click', playRandomSong);
             });
