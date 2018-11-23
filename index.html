@@ -15,7 +15,7 @@
 </body>
 <script type="text/javascript">
             var PAUSE_IN_SECONDS = 5;
-            function playRandomSong2() {
+            function playRandomSong() {
                 var songs = [
                     'assets/eartraining/1.mp3',
                     'assets/eartraining/2.mp3',
@@ -73,13 +73,12 @@
             // This little $(function() { ... }) tells jQuery to run
             // this function when the page loads.
             $(function() {
-                playRandomSong2();
+                playRandomSong();
                 $('#song-note').on('ended', function() {
                     setTimeout(function() {
-                        playRandomSong2();
+                        playRandomSong();
                     }, 1000 * PAUSE_IN_SECONDS);
                 });
-                $('#song-play-note').on('click', playRandomSong);
             });
 </script>
 </html>
