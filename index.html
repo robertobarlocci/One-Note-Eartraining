@@ -1,18 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>EarTraingin One Note</title>
+  <meta charset="utf-8">
+  <title>EarTraining One Note</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">></script>
 </head>
 <body>
   <div align="center">
 <h2>One Note</h2>
 <audio id="song-note" controls>
-    <source id="song-note-source" />
     <p>Audio not supported.</p>
 </audio></div>
 </body>
 <script type="text/javascript">
-            function playRandomSong2() {
+            var PAUSE_IN_SECONDS = 5;
+            function playRandomSong() {
                 var songs = [
                     'assets/eartraining/1.mp3',
                     'assets/eartraining/2.mp3',
@@ -70,11 +72,15 @@
             // This little $(function() { ... }) tells jQuery to run
             // this function when the page loads.
             $(function() {
-                playRandomSong2();
+                var source = document.createElement('source');
+                source.id = 'song-note-source';
+                $('#song-note').append(source);
+                playRandomSong();
                 $('#song-note').on('ended', function() {
-                    playRandomSong2();
+                    setTimeout(function() {
+                        playRandomSong();
+                    }, 1000 * PAUSE_IN_SECONDS);
                 });
-                $('#song-play-note').on('click', playRandomSong);
             });
-        </script>
-        </html>
+</script>
+</html>
