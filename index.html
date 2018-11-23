@@ -9,7 +9,6 @@
   <div align="center">
 <h2>One Note</h2>
 <audio id="song-note" controls>
-    <source id="song-note-source" />
     <p>Audio not supported.</p>
 </audio></div>
 </body>
@@ -73,6 +72,9 @@
             // This little $(function() { ... }) tells jQuery to run
             // this function when the page loads.
             $(function() {
+                var source = document.createElement('source');
+                source.id = 'song-note-source';
+                $('#song-note').append(source);
                 playRandomSong();
                 $('#song-note').on('ended', function() {
                     setTimeout(function() {
